@@ -7,7 +7,11 @@ tags: [clientxcms, opensource, community]
 # ClientXCMS devient open source : une nouvelle ère s'ouvre
 Nous avons aujourd’hui le plaisir de vous annoncer un changement significatif dans le monde de l'hébergement : **le projet prend une nouvelle direction**. Une évolution pensée, mesurée, et portée par un objectif clair : rendre un CMS plus ouvert, plus accessible et résolument tourné vers une dynamique collective.
 
-<!-- truncate -->
+{/* truncate */}
+
+![image](/img/blog/mise-en-opensource/image.png)
+=======
+
 
 ### Un CMS conçu pour être ouvert à toutes et à tous
 
@@ -33,10 +37,10 @@ Au-delà de l’aspect technique, ce modèle ouvre la porte à un **écosystème
 
 Les anciennes formules (Starter, Plus, Professionnel, Business) vont disparaître au profit de **deux offres simples et équitables**, axées sur l’accompagnement et l’accès à des crédits d’extensions :
 
-* **Premium** – 14,99 €/mois ou 119,99 €/an
+* **Premium** – 9,99 €/mois ou 99,99 €/an
   Pour se lancer avec sérénité, un support technique inclus et **3 extensions au choix créés par nos soins** via le marketplace.
 
-* **Entreprise** – 19,99 €/mois ou 159,99 €/an
+* **Entreprise** – 14,99 €/mois ou 149,99 €/an
   Pour les structures souhaitant exploiter tout le potentiel de ClientXCMS, avec **5 extensions au choix créés par nos soins** et un **support personnalisé multi-canal**.
 
 Des services complémentaires à la carte seront disponibles pour répondre aux besoins spécifiques :
