@@ -166,7 +166,7 @@ N’oubliez pas d’intégrer les systèmes d’exploitation et modèles dans la
 :::
 
 ## Configuration de l'offre
-En premier lieu, [créez votre produit](../../../settings/store/products#création) en sélectionnant Proxmox.
+En premier lieu, [créez votre produit](../../settings/store/products.md#créer-un-nouveau-produit) en sélectionnant Proxmox.
 
 ![img](/img/next_gen/extensions/modules/proxmox/image.png)
 
@@ -251,3 +251,44 @@ Chaque option peut avoir un prix différent selon l'option sélectionnée.
 ![img](/img/next_gen/settings/provisioning/configoptions/example_core.png)
 
 Cette configuration permet de sélectionner le nombre de coeurs CPU supplémentaires pour le VPS.
+
+### Metadonnées utilisées
+| Clé                        | Valeur      | Description                                    |
+|----------------------------|-------------|------------------------------------------------|
+| `vmid`                     | int         | ID de la VM sur proxmox                        |
+| `node`                     | string      | Nom du noeud proxmox                           |
+| `config`                   | json        | Configuration du VPS lors d'une réinstallation |
+| `proxmox_reinstall`        | bool        | Indique si il faut réinstaller le VPS          |
+| `type`                     | qemu ou lxc | Type de VPS                                    |
+| `proxmox_need_resize_disk` | int         | Taille à rajouter lors d'une amélioration      |
+| `proxmox_need_restart`     | bool        | Affiche au client qui faut redémarrer son VPS  | 
+--------------------------------
+
+### Erreurs courantes
+
+
+**Installation d'un VPS trop long** : Vérifiez dans [l'historique](../../settings/security/history.md) dans le fichier proxmox-installation-vps.log. Il devrait avoir une erreur à remonter au support.
+
+**Modèles ou systèmes d'exploitations vides** : Cela peut venir d'un problème de permission sur votre clé d'API. Assurez-vous que vous avez désactivé la **Privilege Separation** sur votre jeton API.
+
+**No available IPs** : Cette erreur signifie que vous n'avez pas d'adresses IP disponibles pour allouer à un VPS.
+Le système recherche : 
+- Des IPs est associées à un serveur ou un nœud spécifique, elle ne sera disponible que pour ce même serveur/nœud.
+- Des IPs n'est associées à aucun serveur ou aucun nœud (Aucun), elle est accessible pour tout le monde.
+
+Si aucune IP n'est trouvée. Cette erreur est renvoyée.
+
+**VPS non trouvé (tags)** : CLIENTXCMS utilise un système de tag proxmox (kvm, service-123 par exemple) pour s'assurer que la VM utilisée soit bien pour le bon service. Vérifiez donc sur votre Proxmox que la VM ai bien les bons tags
+
+**VPS non trouvé (metadata)** : Vérifiez les metadonnées de votre service (vmid, node, config)
+
+**VPS non trouvé (resources)** : CLIENTXCMS n'arrive pas à récupérer les resources du VPS.
+
+### Commande Artisan
+
+| Commande                   | Description                                                      | Paramètres |
+|:---------------------------|:-----------------------------------------------------------------|:-----------|
+| `proxmox:delete-vps`       | Supprime les VPS marqués comme "deleted" sur le serveur Proxmox. | -          |
+| `proxmox:disk-vps`         | Gère le disque pour l'installation d'un VPS.                     | -          |
+| `proxmox:installation-vps` | Gère l'installation des VPS qui doivent être installés.          | -          |
+| `proxmox:migrate-config`   | Migre la configuration de Proxmox.                               | -          |
