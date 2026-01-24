@@ -212,6 +212,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['php','http','json', 'uri']
     },
   } satisfies Preset.ThemeConfig,
 };
